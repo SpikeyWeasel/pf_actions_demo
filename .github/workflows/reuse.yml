@@ -2,7 +2,7 @@ name: Reuse other workflow
 
 on:
   workflow_dispatch:
-   inputs:
+    inputs:
       main_param_1:
         description: 'Type any old stuff!'
         type: string
@@ -12,7 +12,7 @@ jobs:
   call-workflow:
     uses: ./.github/workflows/reusable.yml
     with:
-      who-to-greet: ${{ main_param_1 }}'
+      who-to-greet: ${{ inputs.main_param_1 }}'
 
   use-output:
     runs-on: ubuntu-latest
