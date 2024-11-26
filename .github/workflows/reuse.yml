@@ -28,13 +28,14 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       who-to-greet: "${{ inputs.main_param_1 }}"
+    needs: [common-jobbie]
       
   call-workflow-2:
     if: inputs.run_test == 0 || inputs.run_test == 2
     uses: ./.github/workflows/reusable_2.yml
     with:
       favourite-bop: "${{ inputs.main_param_2 }}"
-    
+    needs: [common-jobbie]
     
   use-output:
     runs-on: ubuntu-latest
