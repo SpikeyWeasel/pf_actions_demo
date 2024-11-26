@@ -33,7 +33,7 @@ jobs:
     if: inputs.run_test == 0 || inputs.run_test == 2
     uses: ./.github/workflows/reusable_2.yml
     with:
-      who-to-greet: "${{ inputs.main_param_2 }}"
+      favourite-bop: "${{ inputs.main_param_2 }}"
     
     
   use-output:
