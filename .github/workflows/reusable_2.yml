@@ -20,4 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Exit ze building
-        run: echo "Over and out!!"      
+        run: echo "Over and out!!"
+    needs: [state-bird]
