@@ -1,0 +1,23 @@
+name: Reusable workflow 2
+
+on:
+  workflow_call:
+    inputs:
+      favourite-bop:
+        description: 'Favourite bird of prey?'
+        type: string
+        required: true
+        default: World
+        
+jobs:
+  state-bird:
+    runs-on: ubuntu-latest
+    steps:
+      - name: State favourite bird of prey
+        run: echo "Favourite birdie is ${{ inputs.favourite-bop }}"
+
+  elvis-has-left-the-gaff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exit ze building
+        run: echo "Over and out!!"      
