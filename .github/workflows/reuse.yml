@@ -1,12 +1,18 @@
 name: Reuse other workflow
 
-on: [workflow_dispatch]
-
+on:
+  workflow_dispatch:
+   inputs:
+      main_param_1:
+        description: 'Type any old stuff!'
+        type: string
+        required: true      
+        
 jobs:
   call-workflow:
     uses: ./.github/workflows/reusable.yml
     with:
-      who-to-greet: '@octocat'
+      who-to-greet: ${{ main_param_1 }}'
 
   use-output:
     runs-on: ubuntu-latest
