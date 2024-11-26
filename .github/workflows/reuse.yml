@@ -6,14 +6,36 @@ on:
       main_param_1:
         description: 'Type any old stuff!'
         type: string
-        required: true      
+        required: true 
+      main_param_2:
+        description: 'Favourite bird of prey?'
+        type: string
+        required: true         
+      run_test:
+        description: 'Run test?'
+        type: number
+        required: true              
         
 jobs:
-  call-workflow:
+  common-jobbie:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet someone
+        run: echo "COMMON JOB RUNNING ... STAND BACK!!"
+        
+  call-workflow-1:
+    if: ${{ input.run_test == 0 || input.run_test == 1}}  
     uses: ./.github/workflows/reusable.yml
     with:
-      who-to-greet: ${{ inputs.main_param_1 }}'
-
+      who-to-greet: "${{ inputs.main_param_1 }}"
+      
+  call-workflow-2:
+    if: ${{ input.run_test == 0 || input.run_test == 2 }}
+    uses: ./.github/workflows/reusable_2.yml
+    with:
+      who-to-greet: "${{ inputs.main_param_2 }}"
+    
+    
   use-output:
     runs-on: ubuntu-latest
     needs: [call-workflow]
