@@ -14,12 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: State favourite bird of prey
-        run: echo "Favourite birdie is ${{ inputs.favourite-bop }}"
+        run: |
+          echo "Favourite birdie is ${{ inputs.favourite-bop }}"          
+          exit 1
 
+  elvis-has-entered-the-gaff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enter ze building
+        run: |
+          echo "Uh-huh, here all week folks!!"
+    needs: [state-bird]
+    
   elvis-has-left-the-gaff:
     runs-on: ubuntu-latest
-    environment: pf-test
+    if: always()
     steps:
       - name: Exit ze building
         run: echo "Over and out!!"
-    needs: [state-bird]
+    needs: [state-bird, elvis-has-entered-the-gaff]
