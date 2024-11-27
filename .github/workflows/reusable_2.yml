@@ -18,6 +18,7 @@ jobs:
 
   elvis-has-left-the-gaff:
     runs-on: ubuntu-latest
+    environment: pf-test
     steps:
       - name: Exit ze building
         run: echo "Over and out!!"
